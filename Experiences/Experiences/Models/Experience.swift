@@ -40,10 +40,4 @@ extension Experience: MKAnnotation {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
     }
-    
-    //option
-//    var title: String? {
-//
-//        experienceTitle
-//    }
 }

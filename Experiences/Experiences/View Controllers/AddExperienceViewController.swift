@@ -257,7 +257,7 @@ class AddExperienceViewController: UIViewController {
             return
         }
 
-        performSegue(withIdentifier: "VideoRecord", sender: self)
+        performSegue(withIdentifier: "VideoRecordSegue", sender: self)
         
     }
     
@@ -266,7 +266,7 @@ class AddExperienceViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if segue.identifier == "VideoRecord" {
+       if segue.identifier == "VideoRecordSegue" {
         if let cameraVC = segue.destination as? CameraViewController {
                       cameraVC.experienceController = experienceController
                       cameraVC.experienceTitle = titleTextField.text

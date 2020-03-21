@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
+class CameraViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -210,7 +210,16 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
     
     
     
-// MARK: - Delegate
+
+
+
+}
+
+// MARK: - extention
+
+extension CameraViewController: AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate{
+    
+    // MARK: - Delegate
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if let error = error {
@@ -231,6 +240,5 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         latitude = locValue.latitude
         longitude = locValue.longitude
     }
-
-
+    
 }
