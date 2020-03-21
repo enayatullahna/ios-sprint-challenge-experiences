@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        requestPermissions()
         return true
+    }
+    
+    private func requestPermissions() {
+        let permission = AVAudioSession.sharedInstance()
+        permission.requestRecordPermission { (granted) in
+            guard granted == true else {
+                print("Error: we need microphone permission, to record audio")
+                return
+            }
+            
+            do {
+                try permission.setCategory(.playAndRecord, mode: .default, options: [])
+                try permission.overrideOutputAudioPort(.speaker)
+                try permission.setActive(true, options: [])
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        }
+        
+        AVCaptureDevice.requestAccess(for: .video) { (granted) in
+            guard granted else {
+                fatalError("Tell user they need to enable privacy for Video/Camera/Microphone")
+            }
+        }
     }
 
     // MARK: UISceneSession Lifecycle

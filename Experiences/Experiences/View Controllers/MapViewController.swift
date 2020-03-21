@@ -9,37 +9,114 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
-    // Properties
+    // MARK: - Properties
     let experienceController = ExperienceController()
     
-    //Outlets
+    // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ExperienceView")
 
-        // Do any additional setup after loading the view.
-    }
-    
-
-    
-    
-    @IBAction func addExperienceTaped(_ sender: Any) {
+        fetchExperiences()
         
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchExperiences()
     }
-    */
+    
+    private func fetchExperiences() {
+        let experiences = experienceController.experiences
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(experiences)
+            
+            guard let lastExperience = experiences.last else { return }
+            
+            let coordinateSpan = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
+            let region = MKCoordinateRegion(center: lastExperience.coordinate, span: coordinateSpan)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addExperience" {
+            if let addExperienceVC =  segue.destination as? AddExperienceViewController {
+                addExperienceVC.experienceController = experienceController
+            }
+        }
+    }
+    
+    
+    
+    // MARK: - action outlets
+    @IBAction func addExperienceTaped(_ sender: Any) {
+        performSegue(withIdentifier: "addExperience", sender: self)
+    }
+    
+    // MARK: - Delegate
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            
+            guard let experience = annotation as? Experience else {
+                fatalError("Failed to find expeience")
+            }
+            
+            let identifier = "CustomAnnotation"
+
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+            } else {
+                annotationView!.annotation = annotation
+            }
+
+            configureDetailView(annotationView: annotationView!, experience: experience)
+            
+            return annotationView
+        }
+        
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            guard let mapDetailView = view.detailCalloutAccessoryView as? MapDetailView else { return }
+            
+            mapDetailView.player?.play()
+        }
+        
+        func configureDetailView(annotationView: MKAnnotationView, experience: Experience) {
+            
+            let width = 300
+            let height = 200
+
+            let snapshotView = UIView()
+            let views = ["snapshotView": snapshotView]
+            snapshotView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[snapshotView(300)]", options: [], metrics: nil, views: views))
+            snapshotView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[snapshotView(200)]", options: [], metrics: nil, views: views))
+
+            let options = MKMapSnapshotter.Options()
+            options.size = CGSize(width: width, height: height)
+
+            let snapshotter = MKMapSnapshotter(options: options)
+            snapshotter.start { snapshot, error in
+                if snapshot != nil {
+                    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            imageView.image = UIImage(data: experience.imageData)
+                    snapshotView.addSubview(imageView)
+                }
+            }
+                
+            
+
+            annotationView.detailCalloutAccessoryView = snapshotView
+        }
 
 }

@@ -17,6 +17,9 @@
 		E658B2182426847C00745475 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2172426847C00745475 /* CameraViewController.swift */; };
 		E658B21A2426850C00745475 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2192426850C00745475 /* Experience.swift */; };
 		E658B21C2426852500745475 /* ExperienceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B21B2426852500745475 /* ExperienceController.swift */; };
+		E658B21F242692A500745475 /* InformationAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B21E242692A500745475 /* InformationAlertController.swift */; };
+		E658B2222426959400745475 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2212426959400745475 /* MapDetailView.swift */; };
+		E658B224242695A500745475 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B223242695A500745475 /* CameraPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		E658B2172426847C00745475 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E658B2192426850C00745475 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		E658B21B2426852500745475 /* ExperienceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceController.swift; sourceTree = "<group>"; };
+		E658B21E242692A500745475 /* InformationAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationAlertController.swift; sourceTree = "<group>"; };
+		E658B2212426959400745475 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		E658B223242695A500745475 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 				E658B20F242676F400745475 /* View Controllers */,
 				E658B2102426770200745475 /* Storyboards */,
 				E658B21D242686EB00745475 /* Helper */,
+				E658B2202426957400745475 /* Views */,
 				E658B20E242673F100745475 /* Resources */,
 			);
 			path = Experiences;
@@ -123,8 +130,18 @@
 		E658B21D242686EB00745475 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E658B21E242692A500745475 /* InformationAlertController.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		E658B2202426957400745475 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E658B2212426959400745475 /* MapDetailView.swift */,
+				E658B223242695A500745475 /* CameraPreviewView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +217,10 @@
 			files = (
 				E658B2162426844F00745475 /* AddExperienceViewController.swift in Sources */,
 				E658B2182426847C00745475 /* CameraViewController.swift in Sources */,
+				E658B224242695A500745475 /* CameraPreviewView.swift in Sources */,
+				E658B21F242692A500745475 /* InformationAlertController.swift in Sources */,
 				E658B1FB242673E400745475 /* AppDelegate.swift in Sources */,
+				E658B2222426959400745475 /* MapDetailView.swift in Sources */,
 				E658B21A2426850C00745475 /* Experience.swift in Sources */,
 				E658B2142426798C00745475 /* MapViewController.swift in Sources */,
 				E658B1FD242673E400745475 /* SceneDelegate.swift in Sources */,

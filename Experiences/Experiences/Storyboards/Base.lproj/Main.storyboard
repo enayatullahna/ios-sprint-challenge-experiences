@@ -27,7 +27,7 @@
                                         <state key="normal" title="Add New Experience"/>
                                         <connections>
                                             <action selector="addExperienceTaped:" destination="kMF-lA-fL1" eventType="touchUpInside" id="fZg-1v-oKT"/>
-                                            <segue destination="Ss9-N2-nA9" kind="show" id="H71-iC-zhe"/>
+                                            <segue destination="Ss9-N2-nA9" kind="show" identifier="addExperience" id="H71-iC-zhe"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -169,7 +169,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="HQj-GZ-oSs">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="Ss9-N2-nA9" id="qgw-z8-nKu"/>
-                                <segue destination="EBr-C3-ZSh" kind="presentation" id="O0l-0H-ldd"/>
+                                <segue destination="EBr-C3-ZSh" kind="presentation" identifier="VideoRecord" id="O0l-0H-ldd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -204,6 +204,9 @@
                                         <state key="normal" title="Record">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="recordButtonTapped:" destination="EBr-C3-ZSh" eventType="touchUpInside" id="FgU-WF-zte"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -218,8 +221,16 @@
                                 <rect key="frame" x="0.0" y="9" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Record here" id="y1o-ww-79z">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tbd-EB-X77"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MeW-2F-wcI"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tbd-EB-X77">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="EBr-C3-ZSh" id="14s-e3-DIX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MeW-2F-wcI">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="EBr-C3-ZSh" id="PnB-H3-bQ6"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -238,6 +249,10 @@
                         <viewLayoutGuide key="safeArea" id="th4-zG-6FM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="hxe-1r-AaB"/>
+                    <connections>
+                        <outlet property="cameraView" destination="oMJ-cd-K76" id="Fbw-Gr-VQM"/>
+                        <outlet property="recordButton" destination="VlT-XP-Ft9" id="8Z9-Z5-dDY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sg6-hz-QjT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
