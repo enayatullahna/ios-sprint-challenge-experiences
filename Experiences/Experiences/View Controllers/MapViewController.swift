@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
+    
+    // Properties
+    let experienceController = ExperienceController()
+    
+    //Outlets
+    @IBOutlet weak var mapView: MKMapView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +25,13 @@ class MapViewController: UIViewController {
     }
     
 
+    
+    
+    @IBAction func addExperienceTaped(_ sender: Any) {
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 

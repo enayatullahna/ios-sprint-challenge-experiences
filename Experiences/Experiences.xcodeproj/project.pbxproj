@@ -15,6 +15,8 @@
 		E658B2142426798C00745475 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2132426798C00745475 /* MapViewController.swift */; };
 		E658B2162426844F00745475 /* AddExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2152426844F00745475 /* AddExperienceViewController.swift */; };
 		E658B2182426847C00745475 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2172426847C00745475 /* CameraViewController.swift */; };
+		E658B21A2426850C00745475 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B2192426850C00745475 /* Experience.swift */; };
+		E658B21C2426852500745475 /* ExperienceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B21B2426852500745475 /* ExperienceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		E658B2132426798C00745475 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E658B2152426844F00745475 /* AddExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExperienceViewController.swift; sourceTree = "<group>"; };
 		E658B2172426847C00745475 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E658B2192426850C00745475 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		E658B21B2426852500745475 /* ExperienceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 				E658B2122426773D00745475 /* Controllers */,
 				E658B20F242676F400745475 /* View Controllers */,
 				E658B2102426770200745475 /* Storyboards */,
+				E658B21D242686EB00745475 /* Helper */,
 				E658B20E242673F100745475 /* Resources */,
 			);
 			path = Experiences;
@@ -102,6 +107,7 @@
 		E658B2112426773000745475 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E658B2192426850C00745475 /* Experience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,8 +115,16 @@
 		E658B2122426773D00745475 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E658B21B2426852500745475 /* ExperienceController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E658B21D242686EB00745475 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,8 +201,10 @@
 				E658B2162426844F00745475 /* AddExperienceViewController.swift in Sources */,
 				E658B2182426847C00745475 /* CameraViewController.swift in Sources */,
 				E658B1FB242673E400745475 /* AppDelegate.swift in Sources */,
+				E658B21A2426850C00745475 /* Experience.swift in Sources */,
 				E658B2142426798C00745475 /* MapViewController.swift in Sources */,
 				E658B1FD242673E400745475 /* SceneDelegate.swift in Sources */,
+				E658B21C2426852500745475 /* ExperienceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
