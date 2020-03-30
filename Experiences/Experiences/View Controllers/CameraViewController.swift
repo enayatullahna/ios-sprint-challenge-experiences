@@ -56,6 +56,7 @@ class CameraViewController: UIViewController {
         
     }
     
+    // MARK: - helpGesture
     @objc func handleTapGuesture(_ tapGesture: UITapGestureRecognizer) {
         print("tap")
         switch tapGesture.state {
@@ -84,6 +85,7 @@ class CameraViewController: UIViewController {
         captureSession.stopRunning()
     }
     
+    // MARK: - Camera setup
     private func setUpCamera() {
         let camera = bestCamera()
         
@@ -124,6 +126,7 @@ class CameraViewController: UIViewController {
         cameraView.session = captureSession
     }
     
+    // MARK: - Best camera
     private func bestCamera() -> AVCaptureDevice {
         if let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) {
             return device
@@ -180,7 +183,7 @@ class CameraViewController: UIViewController {
     }
 
     
-// MARK: - aution button
+// MARK: - aution buttons
     @IBAction func recordButtonTapped(_ sender: Any) {
         toggleRecord()
     }
@@ -199,7 +202,7 @@ class CameraViewController: UIViewController {
         
         
         let newExperience = Experience(experienceTitle: experienceTitle, imageData: imageData, audioURL: audioURL, videoURL: videoURL, latitude: latitude, longitude: longitude)
-                experienceController.experiences.append(newExperience)
+        experienceController.experiences.append(newExperience)
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     

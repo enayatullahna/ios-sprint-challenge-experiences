@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 import Photos
 
 class AddExperienceViewController: UIViewController {
@@ -57,10 +56,17 @@ class AddExperienceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timeElapLabel.font = UIFont.monospacedDigitSystemFont(ofSize: timeElapLabel.font.pointSize, weight: .regular)
+        timeRemainingLabel.font = UIFont.monospacedDigitSystemFont(ofSize: timeRemainingLabel.font.pointSize, weight: .regular)
+
+        audioPlayer?.delegate = self
+        titleTextField.delegate = self
 
         updateViews()
     }
     
+    // MARK: - update views
     private func updateViews() {
         
         if let image = image {
@@ -104,6 +110,7 @@ class AddExperienceViewController: UIViewController {
         }
     }
     
+    // MARK: - Filter
     private func filterImage(_ image: UIImage) -> UIImage {
         guard let cgImage = image.cgImage else { return image}
         
@@ -119,7 +126,8 @@ class AddExperienceViewController: UIViewController {
         return UIImage(cgImage: outputCGImage)
     }
     
-    // Playback
+    // MARK: - Playback
+    
     private func playPause() {
         if isPlaying {
             audioPlayer?.pause()
@@ -181,6 +189,7 @@ class AddExperienceViewController: UIViewController {
         }
     }
     
+    // MARK: - image picker
     private func presentImagePickerController() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
             DispatchQueue.main.async {
@@ -246,25 +255,29 @@ class AddExperienceViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        
+        // title
         guard let title = titleTextField.text, !title.isEmpty else {
             self.presentInformationalAlertController(title: "Title is required", message: "Please enter a title for the experience")
             return
         }
-        
+        // image
         guard let _ = image?.pngData(), let _ = recordedURL else {
             self.presentInformationalAlertController(title: "Image and voice record required", message: "Please select an image and record you voice")
             return
         }
-
+        
+        // Video segue
         performSegue(withIdentifier: "VideoRecordSegue", sender: self)
         
     }
     
+    // MARK: - Action Button
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // MARK: - segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "VideoRecordSegue" {
         if let cameraVC = segue.destination as? CameraViewController {
@@ -277,6 +290,7 @@ class AddExperienceViewController: UIViewController {
     }
 
 }
+
 
 // MARK: - Extentions
 

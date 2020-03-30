@@ -47,6 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
 
+    // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addExperience" {
             if let addExperienceVC =  segue.destination as? AddExperienceViewController {
@@ -61,6 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func addExperienceTaped(_ sender: Any) {
         performSegue(withIdentifier: "addExperience", sender: self)
     }
+    
     
     // MARK: - Delegate
     
@@ -113,9 +115,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     snapshotView.addSubview(imageView)
                 }
             }
-                
-            
-
             annotationView.detailCalloutAccessoryView = snapshotView
         }
 
