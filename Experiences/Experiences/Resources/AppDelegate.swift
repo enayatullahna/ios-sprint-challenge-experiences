@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestPermissions()
         return true
     }
-    
+    // MARK: - Permissions 
     private func requestPermissions() {
         let permission = AVAudioSession.sharedInstance()
         permission.requestRecordPermission { (granted) in
